@@ -1,0 +1,24 @@
+{% extends 'qrreader/index.html' %}
+{% block title %}QRcode{% endblock %}
+{% block content %}
+<!-- Call to Action-->
+        <section class="content-section bg-primary text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4">Start work with QR</h2>
+                <form hx-post="{% url 'qrreader:save-image' %}"
+                      hx-target="#portfolio"
+                      hx-swap="outerHTML"
+                      enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <input type="file" name="image" class="form-control" accept="image/*">
+                     <br>
+                       <button class="btn btn-xl btn-light me-4" type="submit">Download and read</button>
+                </form>
+                <hr>
+                <a class="btn btn-xl btn-dark" href="#!">Create new</a>
+            </div>
+        </section>
+
+                   {% include 'qrreader/list-images.html' %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<section class="content-section" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                    <h3 class="text-secondary mb-0">Portfolio</h3>
+                    <h2 class="mb-5">Recent Projects</h2>
+                </div>
+                <div class="row gx-0">
+                   {% if file_url %}
+                   <div class="col-lg-6">
+                       <a class="portfolio-item" href="{{ data }}">
+                           <div class="caption">
+                               <div class="caption-content">
+                                   <div class="h2">Stationary</div>
+                                   <p class="mb-0">{{ data }}</p>
+                               </div>
+                           </div>
+                           <img class="img-fluid" src="{{ file_url }}" alt="..." />
+                       </a>
+                   </div>
+                   {% endif %}
+                </div>
+            </div>
+</section>
+
+
+
+<!--    <h2 class="my-4">Movie Poster</h2>-->
+<!--       <div class="row">-->
+<!--            {% if file_url %}-->
+<!--              <div class="col-lg-4 col-md-6 col-sm-12 pb-4">-->
+<!--                  <img src="{{ file_url }}" class="img-fluid">-->
+<!--                  <br>-->
+<!--                  <a class="btn btn-dark my-4" href="/">Return to Homepage</a>-->
+<!--            {% else %}-->
+<!--                  <p>No movies posters added.</p>-->
+<!--             </div>-->
+<!--           {% endif %}-->
+<!--       </div>-->
