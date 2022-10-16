@@ -1,5 +1,5 @@
 {% extends 'qrreader/index.html' %}
-{% block title %}QRcode{% endblock %}
+{% block title %}QRcode read{% endblock %}
 {% block content %}
 <!-- Call to Action-->
         <section class="content-section bg-primary text-white">
@@ -12,13 +12,28 @@
                      {% csrf_token %}
                      <input type="file" name="image" class="form-control" accept="image/*">
                      <br>
-                       <button class="btn btn-xl btn-light me-4" type="submit">Download and read</button>
+                       <button class="btn btn-xl btn-dark" type="submit">Download and read</button>
                 </form>
                 <hr>
-                <a class="btn btn-xl btn-dark" href="#!">Create new</a>
             </div>
         </section>
-
                    {% include 'qrreader/list-images.html' %}
+
+        <section style="background-color: #887d7d" class="content-section bg-dark text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4">Start work with data for QRcode</h2>
+                <form hx-post="{% url 'qrreader:create-image' %}"
+                      hx-target="#portfolio2"
+                      hx-swap="outerHTML"
+                      enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <input type="text" name="text" class="form-control">
+                     <br>
+                       <button class="btn btn-xl btn-light me-4 " type="submit">Create qrcode</button>
+                </form>
+                <hr>
+            </div>
+        </section>
+                 {% include 'qrreader/created-image.html' %}
 
 {% endblock %}

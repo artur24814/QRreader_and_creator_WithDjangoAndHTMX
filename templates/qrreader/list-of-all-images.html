@@ -1,0 +1,19 @@
+
+<div class="row gx-0" id="list-oll-images">
+{% for file in list_files %}
+<div class="col-lg-6">
+    <div class="portfolio-item" hx-post="{% url 'qrreader:delete-file' file %}"
+                                hx-confirm="Are you sure?"
+                                hx-target="#list-oll-images"
+                                hx-swap="outerHTML">
+        <div class="caption">
+            <div class="caption-content">
+                <div class="h2" style="color: red;">Delete</div>
+                <p class="mb-0"></p>
+            </div>
+        </div>
+        <img class="img-fluid" src="/media/{{ file }}" alt="..." />
+    </div>
+</div>
+{% endfor %}
+</div>
