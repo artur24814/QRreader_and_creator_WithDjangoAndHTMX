@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.views import View
 from django.core.files.storage import FileSystemStorage
 
@@ -76,14 +76,24 @@ def create_image(request):
 
         img = qr.make_image(fill_color='black', back_color='white')
         path = os.path.normpath(os.getcwd())
-        list = len(os.listdir(path + '/media'))
-        file_name = f'/media/newqr{int(list)+1}.png'
+        len_all_files = len(os.listdir(path + '/media'))
+        file_name = f'/media/newqr{len_all_files+2}.png'
         img.save(path + file_name)
         return render(request, 'qrreader/created-image.html', {
             'data': text,
             'file_url': file_name
         })
     return HttpResponse('')
+
+from django.http import FileResponse
+
+def download_image(request):
+    url_img = request.GET.get('url_image')
+    path = os.path.normpath(os.getcwd())
+    img = open(path + url_img, 'rb')
+    response = FileResponse(img, as_attachment=True)
+    os.remove(path + url_img)
+    return response
 
 
 

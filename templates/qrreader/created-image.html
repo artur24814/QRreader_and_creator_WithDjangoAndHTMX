@@ -6,10 +6,11 @@
                 <div class="row gx-0">
                    {% if file_url %}
                    <div class="col-lg-6">
-                       <a class="portfolio-item" target="_blank" href="{{ data }}">
+                       <a class="portfolio-item" href="{% url 'qrreader:download-image' %}?url_image={{ file_url }}">
                            <div class="caption">
                                <div class="caption-content">
-                                   <div class="h2">Data</div>
+                                   <h1 style="color: #0c4128">Click to save</h1>
+                                   <div class="h2">Data:</div>
                                    <p class="mb-0">{{ data }}</p>
                                </div>
                            </div>
